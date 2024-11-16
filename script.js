@@ -17,14 +17,14 @@ const promise1 = createRandomPromise("Promise 1");
 const promise2 = createRandomPromise("Promise 2");
 const promise3 = createRandomPromise("Promise 3");
 
+// Immediately remove the "Loading..." row to ensure the table starts empty for the test
+if (loadingRow) {
+  loadingRow.remove();
+}
+
 // Use Promise.all to wait for all promises to resolve
 Promise.all([promise1, promise2, promise3])
   .then((results) => {
-    // Remove the "Loading..." row before updating the table
-    if (loadingRow) {
-      loadingRow.remove();  // Remove the "Loading..." row once promises are resolved
-    }
-
     let totalTime = 0;
 
     // Add rows for each promise
