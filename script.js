@@ -8,12 +8,8 @@ function createRandomPromise(promiseName) {
   });
 }
 
-// Start by clearing the "Loading..." row immediately
+// Start loading process by showing "Loading..." message
 const output = document.getElementById("output");
-const loadingRow = document.getElementById("loading");
-if (loadingRow) {
-  loadingRow.remove(); // Immediately remove the loading row
-}
 
 // Create three promises
 const promise1 = createRandomPromise("Promise 1");
@@ -23,6 +19,9 @@ const promise3 = createRandomPromise("Promise 3");
 // Use Promise.all to wait for all promises to resolve
 Promise.all([promise1, promise2, promise3])
   .then((results) => {
+    // Clear the "Loading..." row
+    output.innerHTML = "";
+
     let totalTime = 0;
 
     // Add rows for each promise
