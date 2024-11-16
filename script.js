@@ -11,16 +11,16 @@ function createRandomPromise(promiseName) {
 // Start loading process by showing "Loading..." message
 const output = document.getElementById("output");
 
+// Remove the "Loading..." row immediately to avoid extra rows.
+const loadingRow = document.getElementById("loading");
+if (loadingRow) {
+  loadingRow.remove(); // Remove the "Loading..." row from the table immediately.
+}
+
 // Create three promises
 const promise1 = createRandomPromise("Promise 1");
 const promise2 = createRandomPromise("Promise 2");
 const promise3 = createRandomPromise("Promise 3");
-
-// Initially, we should remove the "Loading..." row so the test can expect only 4 rows.
-const loadingRow = document.getElementById("loading");
-if (loadingRow) {
-  loadingRow.remove(); // Remove the "Loading..." row immediately
-}
 
 // Use Promise.all to wait for all promises to resolve
 Promise.all([promise1, promise2, promise3])
