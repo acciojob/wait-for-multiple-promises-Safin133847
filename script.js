@@ -2,6 +2,7 @@ window.onload = function () {
   const outputElement = document.getElementById("output");
 
   const loadingRow = document.createElement("tr");
+  loadingRow.setAttribute("id", "loading"); 
   const loadingCell = document.createElement("td");
   loadingCell.setAttribute("colspan", "2");
   loadingCell.textContent = "Loading...";
@@ -11,12 +12,12 @@ window.onload = function () {
   const startTime = Date.now();
 
   function createPromise(i) {
-    const delay = Math.floor(Math.random() * 2000) + 1000; // Between 1 and 3 seconds
+    const delay = Math.floor(Math.random() * 2000) + 1000; 
     const promiseStartTime = Date.now();
 
     return new Promise((resolve) => {
       setTimeout(() => {
-        const timeTaken = (Date.now() - promiseStartTime) / 1000; // In seconds
+        const timeTaken = (Date.now() - promiseStartTime) / 1000; 
         resolve({ name: "Promise " + i, timeTaken: timeTaken.toFixed(3) });
       }, delay);
     });
@@ -29,7 +30,7 @@ window.onload = function () {
 
   Promise.all(promises).then((results) => {
     const endTime = Date.now();
-    const totalTime = (endTime - startTime) / 1000; // In seconds
+    const totalTime = (endTime - startTime) / 1000; 
 
     outputElement.removeChild(loadingRow);
 
